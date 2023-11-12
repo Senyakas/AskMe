@@ -1,0 +1,37 @@
+{% load static %}
+
+<div class="index-question">
+  <div class="row">
+    <div class="col-2">
+    <div class="index-questions-avatar">
+      <img class ="index-question-img" src="{% static '/assets/avatar-person.svg' %}" alt="avatar">
+    </div>
+    </div>
+    <div class="col-9">
+      <div class="index-question-text">
+        <h2><a href="{% url 'question' question.id %}" class="index-question-header">{{question.title}}</a></h2>
+        <div>{{question.content}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="index-question-footer">
+    <div class="row">
+      <div class="col-2">
+        <div class="vote-box">
+          <div class="votes">5</div>
+          <div class="vote">
+            <div class="voteUp"><a href="#"><img src="../static/assets/upvote.svg" alt="UpVote"></a></div>
+            <div class="voteDown"><a href="#"><img src="../static/assets/downvote.svg" alt="DownVote"></a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-2"><a href="#">answer (3)</a></div>
+      <div class="col-8">
+        Tags:
+        <div class="index-question-tags"><a href="#">Lorem ispum</a></div>
+        <div class="index-question-tags"><a href="#">Lorem ispum</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
