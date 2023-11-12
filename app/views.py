@@ -1,3 +1,4 @@
+from django.http import request
 from django.shortcuts import render
 from django.core.paginator import Paginator
 
@@ -9,12 +10,13 @@ QUESTIONS = [
     } for i in range(100)
 ]
 
-def paginate(objects, page, per_page = 15):
+def paginate(objects, request, per_page = 15):
     paginator = Paginator(objects, per_page)
+    page = request.GET.get('page', 1)
     return paginator.page(page)
 
 def index(request):
-    return render(request, 'index.html', {'questions' : paginate(QUESTIONS, 2)})
+    return render(request, 'index.html', {'questions' : paginate(QUESTIONS, request)})
 
 def question(request, question_id):
     item = QUESTIONS[question_id]

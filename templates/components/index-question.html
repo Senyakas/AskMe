@@ -9,7 +9,7 @@
     </div>
     <div class="col-9">
       <div class="index-question-text">
-        <h2><a href="{% url 'question' question.id %}" class="index-question-header">{{question.title}}</a></h2>
+        <h2><a href="{% url 'question' question.id %}" class="index-question-header">{{page}} {{question.title}}</a></h2>
         <div>{{question.content}}</div>
       </div>
     </div>
