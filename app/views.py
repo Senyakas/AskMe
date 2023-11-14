@@ -32,3 +32,12 @@ def tag_listing(request):
 
 def ask(request):
     return render(request, 'ask.html')
+
+def settings(request):
+    return render(request, 'settings.html')
+
+def login(request):
+    return render(request, 'login.html')
+
+def signup(request):
+    return render(request, 'signup.html')

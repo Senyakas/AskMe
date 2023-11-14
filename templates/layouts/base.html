@@ -6,7 +6,7 @@
 
     <meta charset="utf-8">
     <title>AskMe </title>
-    <link href="{% static '/css/bootstrap.css' %}" rel="stylesheet" crossorigin="anonymous">
+    <link href="{% static '/css/bootstrap.css'%}" rel="stylesheet" crossorigin="anonymous">
     <link href="{% static '/css/style.css' %}" rel="stylesheet">
 
 
@@ -62,7 +62,7 @@
         </li>
       </ul>
     </div>
-
+,
 
 <header>
   <!-- Fixed navbar -->
@@ -89,12 +89,13 @@
 <main class="flex-shrink-0">
   <div class="container">
     <div class="row">
+      <div class="col-8">
       {% block title %}
 
       {% endblock %}
-    </div>
-    <div class="row">
-      <div class="col-8">
+<!--    </div>-->
+<!--    <div class="row">-->
+<!--      <div class="col-8">-->
         {% block content %}
         
         {% endblock %}
