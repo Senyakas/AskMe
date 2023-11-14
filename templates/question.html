@@ -1,4 +1,11 @@
 {% extends 'layouts/base.html'%}
+{% load static %}
+
+{% block header %}
+
+{% include 'components/header-logged-user.html'%}
+
+{% endblock %}
 
 {% block content %}
 
@@ -6,7 +13,7 @@
   <div class="row">
     <div class="col-2">
     <div class="question-questions-avatar">
-      <img class ="question-question-img" src="../static/assets/avatar-person.svg" alt="avatar">
+      <img class ="question-question-img" src="{% static 'assets/avatar-person.svg'%}" alt="avatar">
     </div>
     </div>
     <div class="col-10">
@@ -23,8 +30,8 @@
         <div class="vote-box">
           <div class="votes">5</div>
           <div class="vote">
-            <div class="voteUp"><a href="#"><img src="../static/assets/upvote.svg" alt="UpVote"></a></div>
-            <div class="voteDown"><a href="#"><img src="../static/assets/downvote.svg" alt="DownVote"></a></div>
+            <div class="voteUp"><a href="#"><img src="{% static 'assets/upvote.svg'%}" alt="UpVote"></a></div>
+            <div class="voteDown"><a href="#"><img src="{% static 'assets/downvote.svg'%}" alt="DownVote"></a></div>
           </div>
         </div>
       </div>
@@ -38,92 +45,28 @@
     </div>
   </div>
     <hr>
-</div>
-<div class="question-answer">
-  <div class="row">
-    <div class="col-2">
-    <div class="index-questions-avatar">
-      <img class ="index-question-img" src="../static/assets/avatar-person.svg" alt="avatar">
-    </div>
-    </div>
-    <div class="col-9">
-      <div class="index-question-text" style="padding-top: 10px">
-<!--        <h3><a href="#" class="index-question-header">Sasha Sashev</a></h3>-->
-        <div>
-          legere antiopam erat scripserit te principes doming sadipscing cum augue fermentum affert fermentum urna veniam aptent at electram tacimates lorem iudicabit amet possit discere singulis dico signiferumque esse vix utroque ultricies imperdiet nec dolores referrentur mandamus detracto omittantur consequat tibique per reque dictas ac veniam tritani detraxit vel fabellas eloquentiam finibus invenire netus pericula quot minim doctus quas tamquam mi suavitate quo sonet donec tacimates dicta at idque dolores aperiri dicunt vivamus mea latine ubique donec fuisset auctor voluptaria ipsum nibh suscipit facilisis legere dicant interesset fabulas feugiat pri hinc legimus lorem ultricies esse facilisis
-        </div>
-      </div>
-    </div>
   </div>
-  <div class="index-question-footer" style="padding-top: 10px">
-    <div class="row">
-      <div class="col-2">
-        <div class="vote-box">
-          <div class="votes">5</div>
-          <div class="vote">
-            <div class="voteUp"><a href="#"><img src="../static/assets/upvote.svg" alt="UpVote"></a></div>
-            <div class="voteDown"><a href="#"><img src="../static/assets/downvote.svg" alt="DownVote"></a></div>
+{% for answer in answers %}
+
+{% include 'components/question-answer.html' %}
+
+{% endfor %}
+
+    <hr>
+    <div class="question-selfanswer">
+         <div class="mb-3">
+            <textarea class="form-control" id="exampleFormControlTextarea2" rows="4" placeholder="Enter your answer here"></textarea>
           </div>
-        </div>
-      </div>
-        <div class="col-10">
-           <div class="question-form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
-              <label class="form-check-label" for="flexCheckDefault1">
-                Лучший ответ
-              </label>
-           </div>
-        </div>
-    </div>
-  </div>
-</div>
-<div class="question-answer">
-  <div class="row">
-    <div class="col-2">
-    <div class="index-questions-avatar">
-      <img class ="index-question-img" src="../static/assets/avatar-person.svg" alt="avatar">
-    </div>
-    </div>
-    <div class="col-9">
-      <div class="index-question-text" style="padding-top: 10px">
-<!--        <h3><a href="#" class="index-question-header">Vasya Pupkin</a></h3>-->
-        <div>
-          legere antiopam erat scripserit te principes doming sadipscing cum augue fermentum affert fermentum urna veniam aptent at electram tacimates lorem iudicabit amet possit discere singulis dico signiferumque esse vix utroque quas adversarium tellus ius falli interesset arcu consetetur graeco massa tacimates nibh platea pericula non numquam fermentum evertitur falli quod doctus scripta possit aenean vis
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="index-question-footer" style="padding-top: 10px">
-    <div class="row">
-      <div class="col-2">
-        <div class="vote-box">
-          <div class="votes">5</div>
-          <div class="vote">
-            <div class="voteUp"><a href="#"><img src="../static/assets/upvote.svg" alt="UpVote"></a></div>
-            <div class="voteDown"><a href="#"><img src="../static/assets/downvote.svg" alt="DownVote"></a></div>
+          <div class="question-button">
+            <a class="btn btn-success btn-lg" href="#" role="button">Answer</a>
           </div>
-        </div>
-      </div>
-        <div class="col-10">
-           <div class="question-form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
-              <label class="form-check-label" for="flexCheckDefault2">
-                Лучший ответ
-              </label>
-           </div>
-        </div>
     </div>
-  </div>
 </div>
-  <hr>
-<div class="question-selfanswer">
-     <div class="mb-3">
-        <textarea class="form-control" id="exampleFormControlTextarea2" rows="4" placeholder="Enter your answer here"></textarea>
-      </div>
-      <div class="question-button">
-        <a class="btn btn-success btn-lg" href="#" role="button">Answer</a>
-      </div>
-</div>
-</div>
+
+{% endblock %}
+
+{% block navigation %}
+
+{% include 'components/navigation.html' %}
 
 {% endblock %}

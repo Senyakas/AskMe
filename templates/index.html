@@ -1,6 +1,17 @@
 {% extends 'layouts/base.html' %}
 {% load static %}
 
+{% block header %}
+
+{% include 'components/header-logged-user.html'%}
+
+{% endblock %}
+
+{% block title %}
+    <div class="col-3"><h1 class="mt-0.5">New Questions</h1></div>
+    <div class="col-3"><h5 class="index-hot-questions"><a href="#">Hot Questions</a></h5></div>
+{% endblock %}
+
 {% block content %}
 
 {% for question in questions %}
@@ -8,5 +19,11 @@
 {% include 'components/index-question.html' %}
 
 {% endfor %}
+
+{% endblock %}
+
+{% block navigation %}
+
+{% include 'components/navigation.html' %}
 
 {% endblock %}

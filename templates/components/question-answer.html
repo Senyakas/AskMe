@@ -1,0 +1,40 @@
+{% load static %}
+
+<div class="question-answer">
+  <div class="row">
+    <div class="col-2">
+    <div class="index-questions-avatar">
+      <img class ="index-question-img" src="{% static 'assets/avatar-person.svg'%}" alt="avatar">
+    </div>
+    </div>
+    <div class="col-9">
+      <div class="index-question-text" style="padding-top: 10px">
+<!--        <h3><a href="#" class="index-question-header">Sasha Sashev</a></h3>-->
+        <div>
+            {{answer.content}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="index-question-footer" style="padding-top: 10px">
+    <div class="row">
+      <div class="col-2">
+        <div class="vote-box">
+          <div class="votes">5</div>
+          <div class="vote">
+            <div class="voteUp"><a href="#"><img src="{% static 'assets/upvote.svg'%}" alt="UpVote"></a></div>
+            <div class="voteDown"><a href="#"><img src="{% static 'assets/downvote.svg'%}" alt="DownVote"></a></div>
+          </div>
+        </div>
+      </div>
+        <div class="col-10">
+           <div class="question-form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
+              <label class="form-check-label" for="flexCheckDefault1">
+                Лучший ответ
+              </label>
+           </div>
+        </div>
+    </div>
+  </div>
+</div>
