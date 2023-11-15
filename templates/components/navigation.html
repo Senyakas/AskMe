@@ -1,14 +1,42 @@
 {% load static %}
-
 <div class="navigation">
-    <nav aria-label="Navigarion">
-      <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">...</a></li>
-        <li class="page-item"><a class="page-link" href="{% url ">Next</a></li>
-      </ul>
+    <nav aria-label="Navigation">
+        <ul class="pagination">
+            {% if objects.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1" aria-label="First">
+                        <span aria-hidden="true"><img src="{% static 'assets/skipback.svg' %}" alt="skipback"></span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ objects.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true"><img src="{% static 'assets/previous.svg' %}" alt="skipnext" style="transform: rotateY(180deg)"></span>
+                    </a>
+                </li>
+            {% endif %}
+
+            {% for i in paginator_range %}
+                <li class="page-item {% if objects.number == i %}active{% endif %}">
+                    <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                </li>
+            {% endfor %}
+
+            {% if objects.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ objects.next_page_number }}" aria-label="Next">
+                        <span aria-hidden="true"><img src="{% static 'assets/next.svg' %}" alt="skipprevious"></span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ objects.paginator.num_pages }}" aria-label="Last">
+                        <span aria-hidden="true"><img src="{% static 'assets/skipforward.svg' %}" alt=""></span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
     </nav>
 </div>
+
+
+
+

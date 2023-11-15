@@ -38,8 +38,11 @@
       <div class="col-8">
           <div class="question-tag">
               Tags:
-              <div class="question-question-tags"><a href="#">Lorem ispum</a></div>
-              <div class="question-question-tags"><a href="#">Lorem ispum</a></div>
+              {% for tag in question.tags %}
+
+              <div class="index-question-tags"><a href="{% url 'tag_listing' tag %}">{{tag}}</a></div>
+
+              {% endfor %}
           </div>
       </div>
     </div>

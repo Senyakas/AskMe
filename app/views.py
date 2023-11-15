@@ -33,21 +33,40 @@ for i in range(100):
 def paginate(objects, request, per_page = 15):
     paginator = Paginator(objects, per_page)
     page = request.GET.get('page', 1)
+    try:
+        if int(page) <= 0:
+            page = 1
+        elif int(page) > len(QUESTIONS) // per_page and len(QUESTIONS) % per_page == 0:
+            page = len(QUESTIONS) // per_page
+        elif int(page) > len(QUESTIONS) // per_page + 1:
+            if len(QUESTIONS) % per_page == 0:
+                page = len(QUESTIONS) // per_page
+            else:
+                page = len(QUESTIONS) // per_page + 1
+    except:
+        page = 1
     return paginator.page(page)
 
+def get_range_for_pagination(objects, request, per_page = 15):
+    pages = paginate(objects, request, per_page)
+    start_page = max(1, pages.number - 2)
+    end_page = min(pages.paginator.num_pages, pages.number + 2)
+    pagination_range = range(start_page, end_page + 1)
+    return pagination_range
+
 def index(request):
-    return render(request, 'index.html', {'questions' : paginate(QUESTIONS, request)})
+    return render(request, 'index.html', {'questions' : paginate(QUESTIONS, request), 'objects' : paginate(QUESTIONS, request), 'paginator_range' : get_range_for_pagination(QUESTIONS, request)})
 
 def question(request, question_id):
     item = QUESTIONS[question_id]
-    return render(request, 'question.html', {'question': item, 'answers': paginate(ANSWERS, request, 5)})
+    return render(request, 'question.html', {'question': item, 'answers': paginate(ANSWERS, request), 'objects': paginate(ANSWERS, request, 5), 'paginator_range' : get_range_for_pagination(QUESTIONS, request, 5)})
 
 def tag_listing(request, tag):
     requested_questions = []
     for item in QUESTIONS:
         if tag in item['tags']:
             requested_questions.append(item)
-    return render(request, 'tag_listing.html', {'questions' : paginate(requested_questions, request), 'tag' : tag})
+    return render(request, 'tag_listing.html', {'questions' : paginate(requested_questions, request), 'tag' : tag, 'objects': paginate(requested_questions, request), 'paginator_range': get_range_for_pagination(requested_questions, request)})
 
 def ask(request):
     return render(request, 'ask.html')
@@ -62,4 +81,4 @@ def signup(request):
     return render(request, 'signup.html')
 
 def hot_questions(request):
-    return render(request, 'hot_questions.html', {'questions' : paginate(QUESTIONS, request)})
+    return render(request, 'hot_questions.html', {'questions' : paginate(QUESTIONS, request), 'objects': paginate(QUESTIONS, request),'paginator_range': get_range_for_pagination(QUESTIONS, request)})
