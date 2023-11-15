@@ -20,19 +20,19 @@
     <div class="mb-3 row">
       <label for="dinamicLogin" class="col-sm-3 col-form-label">Login</label>
       <div class="col-sm-6">
-        <textarea class="form-control" id="dinamicLogin" rows="1" placeholder="person1_Login"></textarea>
+        <textarea class="form-control" id="dinamicLogin" rows="1" placeholder="person1_Login" maxlength="64"></textarea>
       </div>
     </div>
     <div class="mb-3 row">
       <label for="dinamicEmail" class="col-sm-3 col-form-label">Email</label>
       <div class="col-sm-6">
-        <input type="email" class="form-control" id="dinamicEmail" placeholder="person1@example.com">
+        <input type="email" class="form-control" id="dinamicEmail" placeholder="person1@example.com" maxlength="64">
       </div>
     </div>
     <div class="mb-3 row">
       <label for="dinamicNickname" class="col-sm-3 col-form-label">Nickname</label>
       <div class="col-sm-6">
-        <textarea class="form-control" id="dinamicNickname" rows="1" placeholder="person1_Nickname"></textarea>
+        <textarea class="form-control" id="dinamicNickname" rows="1" placeholder="person1_Nickname" maxlength="64"></textarea>
       </div>
     </div>
     <div class="mb-3 row">
@@ -41,13 +41,10 @@
         <a href="#"><img src="../static/assets/avatar-person.svg" id="dinamicImage" alt="uploadImage"></a>
       </div>
     </div>
-    <form class="row g-3">
+    <form class="mb-3 row">
       <label class="col-sm-3 col-form-label"></label>
         <div class="col-auto">
-          <textarea class="form-control" rows="1" placeholder="c:\avatar.jpg"></textarea>
-        </div>
-        <div class="col-auto">
-          <button type="submit" class="btn btn-outline-secondary mb-3">Continue</button>
+          <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"/>
         </div>
     </form>
     <div class="mb-3 row">

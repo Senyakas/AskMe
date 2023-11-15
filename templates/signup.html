@@ -14,25 +14,25 @@
     <div class="mb-3 row">
           <label for="dinamicLogin" class="col-sm-3 col-form-label">Login<sup>*</sup></label>
           <div class="col-sm-6">
-            <textarea id="dinamicLogin" class="form-control" rows="1"></textarea>
+            <textarea id="dinamicLogin" class="form-control" rows="1" maxlength="64"></textarea>
           </div>
       </div>
       <div class="mb-3 row">
         <label for="dinamicEmail" class="col-sm-3 col-form-label">Email<sup>*</sup></label>
         <div class="col-sm-6">
-          <input type="email" class="form-control" id="dinamicEmail" placeholder="person1@example.com">
+          <input type="email" class="form-control" id="dinamicEmail" maxlength="64" placeholder="person1@example.com">
         </div>
       </div>
       <div class="mb-3 row">
           <label for="dinamicNickname" class="col-sm-3 col-form-label">Nickname<sup>*</sup></label>
           <div class="col-sm-6">
-            <textarea id="dinamicNickname" class="form-control" rows="1"></textarea>
+            <textarea id="dinamicNickname" class="form-control" rows="1" maxlength="64"></textarea>
           </div>
       </div>
       <div class="mb-3 row">
           <label for="inputPassword" class="col-sm-3 col-form-label">Password<sup>*</sup></label>
           <div class="col-sm-6">
-              <input type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpBlock">
+              <input type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpBlock" maxlength="20">
               <div id="passwordHelpBlock" class="form-text">
                 Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
               </div>
@@ -41,7 +41,7 @@
       <div class="mb-3 row">
           <label for="repeatPassword" class="col-sm-3 col-form-label">Repeat Password<sup>*</sup></label>
           <div class="col-sm-6">
-              <input type="password" id="repeatPassword" class="form-control" aria-describedby="passwordHelpBlock">
+              <input type="password" id="repeatPassword" class="form-control" maxlength="20" aria-describedby="passwordHelpBlock">
           </div>
       </div>
       <form class="row g-3">

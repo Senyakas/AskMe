@@ -4,7 +4,7 @@
 
 {% block title %}
 <h1 class="login-person-header">Log In</h1>
-<h6 style="color: red; margin-bottom: 20px;">Sorry, wrong password!</h6>
+<h6 style="color: red; margin-bottom: 20px;">Sorry, wrong password or login!</h6>
 {% endblock %}
 
 {% block content %}
@@ -12,13 +12,13 @@
   <div class="mb-3 row">
       <label for="dinamicLogin" class="col-sm-3 col-form-label">Login</label>
       <div class="col-sm-6">
-        <textarea id="dinamicLogin" class="form-control" rows="1"></textarea>
+        <textarea id="dinamicLogin" class="form-control" rows="1" maxlength="64"></textarea>
       </div>
   </div>
   <div class="mb-3 row">
       <label for="inputPassword5" class="col-sm-3 col-form-label">Password</label>
       <div class="col-sm-6">
-          <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+          <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" maxlength="20">
           <div id="passwordHelpBlock" class="form-text">
               Need an account? <a href="{% url 'signup' %}">Sign Up</a>
           </div>
