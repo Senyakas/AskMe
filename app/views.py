@@ -6,20 +6,6 @@ from app import models
 def paginate(objects, request, per_page = 15):
     paginator = Paginator(objects, per_page)
     page = request.GET.get('page', 1)
-    try:
-        ...
-        if int(page) <= 0:
-            ...
-            # page = 1
-        elif int(page) > len(objects) // per_page and len(objects) % per_page == 0:
-            page = len(objects) // per_page
-        elif int(page) > len(objects) // per_page + 1:
-            if len(objects) % per_page == 0:
-                page = len(objects) // per_page
-            else:
-                page = len(objects) // per_page + 1
-    except:
-        page = 1
     return paginator.page(page)
 
 def get_range_for_pagination(objects, request, per_page = 15):
@@ -32,9 +18,6 @@ def get_range_for_pagination(objects, request, per_page = 15):
 def index(request):
     QUESTIONS = models.Question.objects.get_all()
     answers = models.Answer.objects.get_answer_count(paginate(QUESTIONS, request))
-    # answers = {}
-    # for question in paginate(QUESTIONS, request):
-    #     answers[question.id] = models.Answer.objects.get_by_question(question.id).count()
     return render(request, 'index.html', {'questions' : paginate(QUESTIONS, request),
                                           'objects' : paginate(QUESTIONS, request),
                                           'paginator_range' : get_range_for_pagination(QUESTIONS, request),
@@ -54,8 +37,6 @@ def tag_listing(request, tag):
     requested_questions = models.Question.objects.get_by_tag(tag)
     QUESTIONS = models.Question.objects.get_all()
     answers = models.Answer.objects.get_answer_count(paginate(QUESTIONS, request))
-    # for question in paginate(QUESTIONS, request):
-    #     answers[question.id] = models.Answer.objects.get_by_question(question.id).count()
     return render(request, 'tag_listing.html', {'questions' : paginate(requested_questions, request),
                                                 'tag' : tag,
                                                 'objects': paginate(requested_questions, request),
@@ -78,9 +59,6 @@ def signup(request):
 def hot_questions(request):
     QUESTIONS = models.Question.objects.get_hot()
     answers = models.Answer.objects.get_answer_count(paginate(QUESTIONS, request))
-    # answers = {}
-    # for question in paginate(QUESTIONS, request):
-    #     answers[question.id] = models.Answer.objects.get_by_question(question.id).count()
     return render(request, 'hot_questions.html', {'questions' : paginate(QUESTIONS, request),
                                                   'objects': paginate(QUESTIONS, request),
                                                   'paginator_range': get_range_for_pagination(QUESTIONS, request),
