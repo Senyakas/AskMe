@@ -11,7 +11,7 @@
       <div class="index-question-text" style="padding-top: 10px">
 <!--        <h3><a href="#" class="index-question-header">Sasha Sashev</a></h3>-->
         <div>
-            {{answer.content}}
+            {{answer.text}}
         </div>
       </div>
     </div>
@@ -20,7 +20,7 @@
     <div class="row">
       <div class="col-2">
         <div class="vote-box">
-          <div class="votes">5</div>
+          <div class="votes">{{ answer.like_count }}</div>
           <div class="vote">
             <div class="voteUp"><a href="#"><img src="{% static 'assets/upvote.svg'%}" alt="UpVote"></a></div>
             <div class="voteDown"><a href="#"><img src="{% static 'assets/downvote.svg'%}" alt="DownVote"></a></div>

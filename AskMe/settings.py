@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-vm%v0()4ym!m@$+4^kqtqmbas&*6)(6uj=@&e6f*i=@91g4^m$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -66,6 +66,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries': {
+                'custom_filter': 'app.templates.custom_filter'
+            }
         },
     },
 ]
@@ -78,8 +81,12 @@ WSGI_APPLICATION = 'AskMe.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'askme',
+        'USER': 'senya',
+        'PASSWORD': 'admin',
+        'HOST': 'localhost',
+        'PORT': ''
     }
 }
 

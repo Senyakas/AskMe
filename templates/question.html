@@ -20,7 +20,7 @@
       <div class="question-question-text">
         <h2><a href="#" class="index-question-header">{{question.title}}</a></h2>
         <div>
-            {{question.content}}
+            {{question.text}}
         </div>
     </div>
   </div>
@@ -28,7 +28,7 @@
     <div class="row">
       <div class="col-2">
         <div class="vote-box">
-          <div class="votes">5</div>
+          <div class="votes">{{ question.like_count }}</div>
           <div class="vote">
             <div class="voteUp"><a href="#"><img src="{% static 'assets/upvote.svg'%}" alt="UpVote"></a></div>
             <div class="voteDown"><a href="#"><img src="{% static 'assets/downvote.svg'%}" alt="DownVote"></a></div>
@@ -38,9 +38,9 @@
       <div class="col-8">
           <div class="question-tag">
               Tags:
-              {% for tag in question.tags %}
+              {% for tag in question.tags.all %}
 
-              <div class="index-question-tags"><a href="{% url 'tag_listing' tag %}">{{tag}}</a></div>
+              <div class="index-question-tags"><a href="{% url 'tag_listing' tag=tag.title %}">{{ tag }}</a></div>
 
               {% endfor %}
           </div>

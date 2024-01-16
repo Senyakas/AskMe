@@ -104,13 +104,18 @@
         <div class="tags">
           <h2>Popular Tags</h2>
           <div class="tags-text">
-            <a class="btn btn-outline-primary" href="{% url 'tag_listing' 'CSS' %}" role="button">CSS</a>
-            <a class="btn btn-outline-secondary" href="{% url 'tag_listing' 'HTML' %}" role="button">HTML</a>
-            <a class="btn btn-outline-success" href="{% url 'tag_listing' 'Python' %}" role="button">Python</a>
-            <a class="btn btn-outline-danger" href="{% url 'tag_listing' 'Django' %}" role="button">Django</a>
-            <a class="btn btn-outline-warning" href="{% url 'tag_listing' 'C++' %}" role="button">C++</a>
-            <a class="btn btn-outline-info" href="{% url 'tag_listing' 'Databases' %}" role="button">Databases</a>
-            <a class="btn btn-outline-dark" href="{% url 'tag_listing' 'Bootstrap' %}" role="button">Bootstrap</a>
+            {% for tag in tags %}
+
+              <a class="btn btn-outline-primary" href="{% url 'tag_listing' tag=tag.title %}" role="button">{{ tag.title }}</a>
+
+            {% endfor %}
+<!--            <a class="btn btn-outline-primary" href="{% url 'tag_listing' 'CSS' %}" role="button">CSS</a>-->
+<!--            <a class="btn btn-outline-secondary" href="{% url 'tag_listing' 'HTML' %}" role="button">HTML</a>-->
+<!--            <a class="btn btn-outline-success" href="{% url 'tag_listing' 'Python' %}" role="button">Python</a>-->
+<!--            <a class="btn btn-outline-danger" href="{% url 'tag_listing' 'Django' %}" role="button">Django</a>-->
+<!--            <a class="btn btn-outline-warning" href="{% url 'tag_listing' 'C++' %}" role="button">C++</a>-->
+<!--            <a class="btn btn-outline-info" href="{% url 'tag_listing' 'Databases' %}" role="button">Databases</a>-->
+<!--            <a class="btn btn-outline-dark" href="{% url 'tag_listing' 'Bootstrap' %}" role="button">Bootstrap</a>-->
           </div>
         </div>
         <div class="popular-members">
