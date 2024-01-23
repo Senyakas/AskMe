@@ -1,70 +1,23 @@
 {% extends 'layouts/base.html' %}
 {% load static %}
-
+{% load bootstrap5 %}
 {% block title %}
-
-<h1 class="login-person-header">Sign Up</h1>
-<h6 style="color: red; margin-bottom: 20px;">Sorry, user with this login is already exist!</h6>
-
+<div class="row align-items-center">
+    <div class="col-3"><h1 class="login-person-header">Sign Up</h1></div>
+    <div class="col-4" id="passwordHelpBlock" class="form-text">Already have an account? <a href="{% url 'login' %}">Log In</a></div>
+</div>
 {% endblock %}
 
 {% block content %}
 
 <div class="col-9">
-    <div class="mb-3 row">
-          <label for="dinamicLogin" class="col-sm-3 col-form-label">Login<sup>*</sup></label>
-          <div class="col-sm-6">
-            <textarea id="dinamicLogin" class="form-control" rows="1" maxlength="64"></textarea>
-          </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="dinamicEmail" class="col-sm-3 col-form-label">Email<sup>*</sup></label>
-        <div class="col-sm-6">
-          <input type="email" class="form-control" id="dinamicEmail" maxlength="64" placeholder="person1@example.com">
-        </div>
-      </div>
-      <div class="mb-3 row">
-          <label for="dinamicNickname" class="col-sm-3 col-form-label">Nickname<sup>*</sup></label>
-          <div class="col-sm-6">
-            <textarea id="dinamicNickname" class="form-control" rows="1" maxlength="64"></textarea>
-          </div>
-      </div>
-      <div class="mb-3 row">
-          <label for="inputPassword" class="col-sm-3 col-form-label">Password<sup>*</sup></label>
-          <div class="col-sm-6">
-              <input type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpBlock" maxlength="20">
-              <div id="passwordHelpBlock" class="form-text">
-                Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-              </div>
-          </div>
-      </div>
-      <div class="mb-3 row">
-          <label for="repeatPassword" class="col-sm-3 col-form-label">Repeat Password<sup>*</sup></label>
-          <div class="col-sm-6">
-              <input type="password" id="repeatPassword" class="form-control" maxlength="20" aria-describedby="passwordHelpBlock">
-          </div>
-      </div>
-      <form class="row g-3">
-        <label for="dinamicPath" class="col-sm-3 col-form-label">Upload Image</label>
-          <div class="col-auto">
-            <textarea class="form-control" rows="1" id="dinamicPath" placeholder="c:\avatar.jpg"></textarea>
-          </div>
-          <div class="col-auto">
-            <button type="submit" class="btn btn-outline-secondary mb-3">Continue</button>
-          </div>
-      </form>
-    <div class="mb-3 row">
-      <label class="col-sm-3 col-form-label"></label>
-      <div class="col-sm-3">
-        <a href="{% url 'index' %}" class="btn btn-outline-dark" role="button"type="submit">Sign Up</a>
-      </div>
-        <div id="passwordHelpBlock" class="form-text">
-            Already have an account? <a href="{% url 'login' %}">Log In</a>
-        </div>
-      <div class="form-text" style="color: red">
-          <sup>*</sup>Necessary to fill in
-      </div>
-    </div>
+    <form action="signup" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            {% endbuttons %}
+    </form>
 </div>
 
 {% endblock %}
